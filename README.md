@@ -1,2 +1,4 @@
 # python_helpers
-Contains some classes handling different things
+## GlobalFileHandler.py
+- Append data to file and all open files will be closed on SIGINT oder SIGTERM.
+- Additional functions
