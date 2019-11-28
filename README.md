@@ -1,4 +1,4 @@
 # python_helpers
 ## GlobalFileHandler.py
-- Append data to file and all open files will be closed on SIGINT oder SIGTERM.
+- Holds file Handles in a central class (implements singleton) that wil close all handles on SIGINT and SIGTERM
 - Additional functions
