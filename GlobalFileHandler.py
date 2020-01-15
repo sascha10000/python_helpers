@@ -75,12 +75,38 @@ class GlobalFileHandler:
         self.filehandlers[handler].close()
         print("File " + handler + " closed!")
 
+      self.filehandlers = {}
+
 
   ### SINGLETON STUFF
-  instance = None
+  instance:__Singleton = None
   def __init__(self):
     if GlobalFileHandler.instance is None:
       GlobalFileHandler.instance = GlobalFileHandler.__Singleton()
 
+  '''
+  EXECUTES EVERY __getattr__ CALL ON THE SINGLETON INSTANCE
+  '''
   def __getattr__(self, name):
     return getattr(self.instance, name)
+
+  '''
+  THE FOLLOWING PART JUST MIRRORS THE METHODS OF THE SINGLETON INSTANCE FOR CODE COMPLETION
+  '''
+  def append(self, data, file):
+    GlobalFileHandler.instance.append(data, file)
+
+  def handlers(self):
+    return GlobalFileHandler.instance.handlers()
+
+  def getHandle(self, file):
+    return GlobalFileHandler.instance.getHandle(file)
+
+  def remove(self, file) -> bool:
+    return GlobalFileHandler.instance.remove(file)
+
+  def exists(self, file) -> bool:
+    return GlobalFileHandler.instance.exists(file)
+
+  def close_all(self):
+    GlobalFileHandler.instance.close_all()
